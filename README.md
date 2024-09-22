@@ -31,9 +31,19 @@ The dataset was cleaned and processed to handle missing values and outliers. Key
 Exploratory Data Analysis (EDA) involved visualizing trends in the Bitcoin closing prices, identifying patterns, and understanding the relationships between engineered features and the target variable.
 
 ### Key Findings from EDA:
-- Identified significant trends and fluctuations in closing prices over time.
-- Visualized the differenced data to confirm stationarity.
-- Plotted ACF and PACF to determine suitable parameters for ARIMA modeling.
+- **Trend Identification**: 
+  - Significant price increase from early 2020 to late 2021.
+  - Sharp decline observed in the first half of 2022.
+  
+- **Volatility Analysis**: 
+  - High volatility during 2020-2021 due to global market uncertainties.
+  - Fluctuations exceeded 50%, with another volatile phase in early 2022.
+
+- **Seasonality**: 
+  - Higher price movements consistently noted in Q4 (October to December) across multiple years.
+
+- **Stationarity**: 
+  - ADF test showed the time series is non-stationary. Differencing was applied to achieve stationarity for modeling.
 
 ## Skills/Concepts Demonstrated
 ### Python Features Utilized:
@@ -54,9 +64,19 @@ Exploratory Data Analysis (EDA) involved visualizing trends in the Bitcoin closi
 - **Parameter Selection**: Automated ARIMA order selection based on AIC criterion.
 - **Forecasting**: Utilized the fitted model to forecast future values.
 
+## Model Implementation
+### ARIMA Model
+- **Fitting Process**: Employed differencing to ensure stationarity and used ADF tests to validate it.
+- **Parameter Selection**: Automated ARIMA order selection based on AIC criterion.
+- **Multiple Model Execution**: Executed ARIMA models on differenced, standardized, and normalized data to evaluate performance across different preprocessing methods.
+
 #### Results from ARIMA:
 - Best ARIMA Order for Differenced Data: **(2, 0, 2)**
-- Root Mean Squared Error (RMSE): **18980.43**
+  - Root Mean Squared Error (RMSE): **18980.43**
+- Best ARIMA Order for Normalized Data: **(3, 0, 4)**
+  - RMSE: **20345.67**
+- Best ARIMA Order for Standardized Data: **(3, 0, 4)**
+  - RMSE: **5281.48**
 
 ### Random Forest Regressor
 - Implemented feature engineering to create lagged features and rolling statistics.
@@ -70,11 +90,15 @@ Exploratory Data Analysis (EDA) involved visualizing trends in the Bitcoin closi
   - lag1 (50.27%)
   - MA3 (49.46%)
 
+## Conclusion
+After evaluating both ARIMA and Random Forest models, the **Random Forest model** achieved a lower Root Mean Squared Error (RMSE) of **879.33**, while the best-performing ARIMA model on standardized data had an RMSE of **5281.48**. This indicates that the Random Forest model provided superior accuracy for predicting Bitcoin closing prices in this analysis. 
+
+Therefore, for time series forecasting in this context, the **Random Forest model is recommended** due to its better performance compared to the ARIMA models. The Random Forest model also offers insights into feature importance, which can be beneficial for further analysis and decision-making.
+
+
 ## Visualization
 The project includes various visualizations to illustrate trends and model performance:
-1. Time series plots of Bitcoin closing prices.
-2. ACF and PACF plots for assessing model parameters.
-3. Comparison of actual vs. forecasted values.
+![](.png)
 
 ## Recommendations
 1. **Utilize Feature Engineering**: Continue to explore additional features to enhance predictive models.
