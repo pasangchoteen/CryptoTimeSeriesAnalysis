@@ -6,16 +6,15 @@ Welcome to the Crypto Time Series Analysis repository! This project focuses on a
 **_Disclaimer_**: _All datasets and analyses are for educational purposes only and do not represent any financial advice._
 
 ## Data Sources
-**BTC Closing Prices**: The primary dataset used for this analysis is the "BTC.csv" file, which contains historical data on Bitcoin closing prices.
+**BTC Data**: The primary dataset used for this analysis is the "BTC.csv" file, which contains historical data on Bitcoin closing prices.
 
 ## Tools
-- **Python** - Data processing, analysis, and model implementation
-- **Pandas** - Data manipulation and analysis
-- **Matplotlib/Seaborn** - Data visualization
-- **Statsmodels** - Time series analysis and modeling
-- **Scikit-learn** - Machine learning model implementation
+## Tools
+- **Python**: Utilized for data manipulation, statistical modeling, and visualizations.
+- **Libraries**: `pandas`, `numpy`, `matplotlib`, `sklearn`, `statsmodels`
 
 ## Data Cleaning/Processing
+The dataset focuses solely on the closing prices of Bitcoin. Other columns such as open, high, and low prices have been ignored for this analysis. The data was cleaned by forward-filling missing values and ensuring proper datetime formatting.
 The dataset was cleaned and processed to handle missing values and outliers. Key steps included:
 - Sorting the data by date and ensuring it has a daily frequency.
 - Forward filling missing values to maintain continuity.
@@ -62,13 +61,14 @@ Exploratory Data Analysis (EDA) involved visualizing trends in the Bitcoin closi
 ### ARIMA Model
 - **Fitting Process**: Employed differencing to ensure stationarity and used ADF tests to validate it.
 - **Parameter Selection**: Automated ARIMA order selection based on AIC criterion.
-- **Forecasting**: Utilized the fitted model to forecast future values.
-
-## Model Implementation
-### ARIMA Model
-- **Fitting Process**: Employed differencing to ensure stationarity and used ADF tests to validate it.
-- **Parameter Selection**: Automated ARIMA order selection based on AIC criterion.
 - **Multiple Model Execution**: Executed ARIMA models on differenced, standardized, and normalized data to evaluate performance across different preprocessing methods.
+
+### Steps Taken:
+1. **Differencing**: The original data was differenced to achieve stationarity.
+2. **ADF Test**: The Augmented Dickey-Fuller (ADF) test confirmed that the differenced data was stationary.
+3. **ACF and PACF**: The ACF and PACF plots of the original data showed high correlations, indicating the need for differencing.
+4. **Model Selection**: Multiple ARIMA models were executed on differenced, standardized, and normalized data, with the best-performing model identified based on RMSE.
+
 
 #### Results from ARIMA:
 - Best ARIMA Order for Differenced Data: **(2, 0, 2)**
@@ -90,50 +90,40 @@ Exploratory Data Analysis (EDA) involved visualizing trends in the Bitcoin closi
   - lag1 (50.27%)
   - MA3 (49.46%)
 
-## Conclusion
-After evaluating both ARIMA and Random Forest models, the **Random Forest model** achieved a lower Root Mean Squared Error (RMSE) of **879.33**, while the best-performing ARIMA model on standardized data had an RMSE of **5281.48**. This indicates that the Random Forest model provided superior accuracy for predicting Bitcoin closing prices in this analysis. 
+## Model Comparison
+While the ARIMA model provided reasonable forecasts with higher RMSE values, the Random Forest model outperformed in terms of predictive accuracy, making it the recommended choice for this analysis.
 
-Therefore, for time series forecasting in this context, the **Random Forest model is recommended** due to its better performance compared to the ARIMA models. The Random Forest model also offers insights into feature importance, which can be beneficial for further analysis and decision-making.
-
-
-## Visualization
 The project includes various visualizations to illustrate trends and model performance:
 
-1. **BTC Closing Price**: This plot captures the historical closing prices of Bitcoin over time, showcasing its volatility and overall trend in the cryptocurrency market.
-
+1. **BTC Closing Price**: Shows the historical closing prices of Bitcoin.
    ![](BTCClosingPrice.png)
 
-2. **BTC Differenced Data**: This visualization illustrates the differenced data, which highlights the fluctuations in price after removing trends, aiding in achieving stationarity for analysis.
-
+2. **Differenced Data**: Illustrates the transformation applied to achieve stationarity.
    ![](BTCDifferencedData.png)
 
-3. **ACF of Original Data**: The Autocorrelation Function (ACF) plot for the original data shows the correlation of Bitcoin prices with their past values, essential for identifying AR terms in ARIMA models.
-
+3. **ACF of Original Data**: Displays the autocorrelation of the original data, indicating high correlation with past values.
    ![](ACFOriginal.png)
 
-4. **PACF of Original Data**: The Partial Autocorrelation Function (PACF) plot indicates the strength of correlation between a value and its lags, guiding the selection of ARIMA parameters.
-
+4. **PACF of Original Data**: Shows the partial autocorrelation, supporting the stationarity of the series.
    ![](PacfOriginal.png)
 
-5. **ACF of Differenced Data**: This ACF plot of the differenced data demonstrates how the correlation structure changes post-differencing, confirming stationarity.
-
+5. **ACF of Differenced Data**: Reflects reduced correlations, confirming stationarity post-differencing.
    ![](AcfDiff.png)
 
-6. **PACF of Differenced Data**: The PACF plot for the differenced data provides insights into the lag structure needed for ARIMA model selection.
-
+6. **PACF of Differenced Data**: Further supports the findings of the ACF plot for the differenced data.
    ![](PacfDiff.png)
 
-7. **ARIMA Forecast on Differenced Data**: This plot compares actual closing prices against forecasted values from the ARIMA model, showcasing the model's predictive capabilities.
-
+7. **ARIMA Model Forecast**: Compares actual vs. forecasted values using the ARIMA model.
    ![](ARIMADiff.png)
 
-8. **ARIMA Forecast on Normalized and Standardized Data**: This visualization displays forecasts from ARIMA models applied to normalized and standardized datasets, illustrating the impact of different preprocessing techniques.
-
+8. **Normalized and Standardized ARIMA Forecasts**: Visual comparison of forecasts from different data transformations.
    ![](ARIMANormStandard.png)
 
-9. **Feature Importance Plot**: This plot highlights the importance of various features used in the Random Forest model, revealing which lagged values and rolling averages were most influential in price predictions.
-
+9. **Feature Importance**: Highlights the significance of features used in the Random Forest model.
    ![](FeaturesPlot.png)
+
+## Conclusion
+This project successfully analyzed and forecasted Bitcoin closing prices using ARIMA and Random Forest models. The Random Forest model demonstrated superior predictive accuracy, making it the preferred choice for future forecasting tasks.
 
 ## Recommendations
 1. **Utilize Feature Engineering**: Continue to explore additional features to enhance predictive models.
@@ -141,7 +131,7 @@ The project includes various visualizations to illustrate trends and model perfo
 3. **Consider External Factors**: Incorporate market news and events that may impact Bitcoin prices into the analysis for improved forecasting.
 
 ## Limitations
-The analysis is based on historical data and may not account for future market dynamics. Results are for demonstration and educational purposes only.
+The dataset used is limited to closing prices and does not account for other market factors that could influence prices. Future analyses could incorporate additional features for improved modeling.
 
 ## References
 1. Kaggle
