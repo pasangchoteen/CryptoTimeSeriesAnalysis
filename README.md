@@ -98,15 +98,42 @@ Therefore, for time series forecasting in this context, the **Random Forest mode
 
 ## Visualization
 The project includes various visualizations to illustrate trends and model performance:
-![](BTCClosingPrice.png)
-![](BTCDifferencedData.png)
-![](ACFOriginal.png)
-![](PacfOriginal.png)
-![](AcfDiff.png)
-![](PacfDiff.png)
-![](ARIMADiff.png)
-![](ARIMANormStandard.png)
-![](FeaturesPlot.png)
+
+1. **BTC Closing Price**: This plot captures the historical closing prices of Bitcoin over time, showcasing its volatility and overall trend in the cryptocurrency market.
+
+   ![](BTCClosingPrice.png)
+
+2. **BTC Differenced Data**: This visualization illustrates the differenced data, which highlights the fluctuations in price after removing trends, aiding in achieving stationarity for analysis.
+
+   ![](BTCDifferencedData.png)
+
+3. **ACF of Original Data**: The Autocorrelation Function (ACF) plot for the original data shows the correlation of Bitcoin prices with their past values, essential for identifying AR terms in ARIMA models.
+
+   ![](ACFOriginal.png)
+
+4. **PACF of Original Data**: The Partial Autocorrelation Function (PACF) plot indicates the strength of correlation between a value and its lags, guiding the selection of ARIMA parameters.
+
+   ![](PacfOriginal.png)
+
+5. **ACF of Differenced Data**: This ACF plot of the differenced data demonstrates how the correlation structure changes post-differencing, confirming stationarity.
+
+   ![](AcfDiff.png)
+
+6. **PACF of Differenced Data**: The PACF plot for the differenced data provides insights into the lag structure needed for ARIMA model selection.
+
+   ![](PacfDiff.png)
+
+7. **ARIMA Forecast on Differenced Data**: This plot compares actual closing prices against forecasted values from the ARIMA model, showcasing the model's predictive capabilities.
+
+   ![](ARIMADiff.png)
+
+8. **ARIMA Forecast on Normalized and Standardized Data**: This visualization displays forecasts from ARIMA models applied to normalized and standardized datasets, illustrating the impact of different preprocessing techniques.
+
+   ![](ARIMANormStandard.png)
+
+9. **Feature Importance Plot**: This plot highlights the importance of various features used in the Random Forest model, revealing which lagged values and rolling averages were most influential in price predictions.
+
+   ![](FeaturesPlot.png)
 
 ## Recommendations
 1. **Utilize Feature Engineering**: Continue to explore additional features to enhance predictive models.
