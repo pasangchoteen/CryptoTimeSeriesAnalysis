@@ -14,8 +14,7 @@ Welcome to the Crypto Time Series Analysis repository! This project focuses on a
 - **Libraries**: `pandas`, `numpy`, `matplotlib`, `sklearn`, `statsmodels`
 
 ## Data Cleaning/Processing
-The dataset focuses solely on the closing prices of Bitcoin. Other columns such as open, high, and low prices have been ignored for this analysis. The data was cleaned by forward-filling missing values and ensuring proper datetime formatting.
-The dataset was cleaned and processed to handle missing values and outliers. Key steps included:
+The dataset focuses solely on the closing prices of Bitcoin. Other columns such as open, high, and low prices have been ignored for this analysis. The data was cleaned and processed to handle missing values and outliers. Key steps included:
 - Sorting the data by date and ensuring it has a daily frequency.
 - Forward filling missing values to maintain continuity.
 - Performing differencing to achieve stationarity for time series analysis.
