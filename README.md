@@ -98,7 +98,15 @@ Therefore, for time series forecasting in this context, the **Random Forest mode
 
 ## Visualization
 The project includes various visualizations to illustrate trends and model performance:
-![](.png)
+![](BTCClosingPrice.png)
+![](BTCDifferencedData.png)
+![](ACFOriginal.png)
+![](PacfOriginal.png)
+![](AcfDiff.png)
+![](PacfDiff.png)
+![](ARIMADiff.png)
+![](ARIMANormStandard.png)
+![](FeaturesPlot.png)
 
 ## Recommendations
 1. **Utilize Feature Engineering**: Continue to explore additional features to enhance predictive models.
